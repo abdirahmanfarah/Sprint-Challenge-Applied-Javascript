@@ -22,31 +22,33 @@ const allArticles = document.querySelector('.cards-container');
 
 const articleData = [
 
-  'bootstrap',
-  'javascript',
-  'jquery',
-  'node',
-  'technology'
+  // 'bootstrap',
+  // 'javascript',
+  // 'jquery',
+  // 'node',
+  // 'technology'
 ];
 
 
-articleData.map(item => {
+
 
   axios 
-    .get(`https://lambda-times-backend.herokuapp.com/articles/`)
+    .get(`https://lambda-times-backend.herokuapp.com/articles`)
     .then(response => {
       console.log(response.data);
-        response.data.forEach(item => {
+          // const noCards = Cards(response.data);
 
-          const noCards = Cards(response.data.articles);
-          articleData.appendChild(noCards);
-          articleData.push(noCards);
-        })
-          allArticles.appendChild(Cards(response.data));
+          // articleData.push(noCards);
+          // allArticles.appendChild(Cards(response.data));
+          allArticles.appendChild(Cards(response.data.articles));
+          
+
     })
     .catch(err => console.log('No Data: ', err));
-})
+// })
 
+
+console.log(allArticles);
 
 
 function Cards(item) {
