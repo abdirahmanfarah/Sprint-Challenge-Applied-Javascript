@@ -20,14 +20,14 @@
 
 const allArticles = document.querySelector('.cards-container');
 
-const articleData = [
+const articleData = {
 
   // 'bootstrap',
   // 'javascript',
   // 'jquery',
   // 'node',
   // 'technology'
-];
+};
 
 
 
@@ -73,12 +73,12 @@ function Cards(item) {
     mainCard.appendChild(headline);
     mainCard.appendChild(author);
     mainCard.appendChild(byAuthor);
-    author.appendChild(img-container);
+    author.appendChild(imgContainer);
     imgContainer.appendChild(img);
 
     // Text Content
     headline.textContent = `Headline: ${item.headline}`;
-    author.textContent = `Author: ${authorName}`;
+    author.textContent = `author: ${authorName}`;
     img.setAttribute('src', item.authorPhoto);
 
     return mainCard
