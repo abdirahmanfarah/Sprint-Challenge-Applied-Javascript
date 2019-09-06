@@ -20,35 +20,33 @@
 
 const allArticles = document.querySelector('.cards-container');
 
-const articleData = {
 
-  // 'bootstrap',
-  // 'javascript',
-  // 'jquery',
-  // 'node',
-  // 'technology'
-};
-
-
-
-
-  axios 
+const articleData = axios 
     .get(`https://lambda-times-backend.herokuapp.com/articles`)
     .then(response => {
       console.log(response.data);
-          // const noCards = Cards(response.data);
-
-          // articleData.push(noCards);
-          // allArticles.appendChild(Cards(response.data));
-          allArticles.appendChild(Cards(response.data.articles));
-          
+               // articleData.push(noCards);
+              //  const articleData = {
+              //    key1: 'bootstrap',
+              //    key2: 'node'
+              //  };
+               let items = Object.values(articleData);
+               console.log(items);
+               items.forEach(value => {
+                  allArticles.appendChild(Cards(response.data.articles.bootstrap));
+        
+          // console.log(items);
+      });
 
     })
-    .catch(err => console.log('No Data: ', err));
-// })
+    .catch(err => {
+      console.log('No Data: ', err)
+    });
+      
+// console.log(allArticles);
+// const articleData = {
+// };
 
-
-console.log(allArticles);
 
 
 function Cards(item) {
@@ -62,6 +60,8 @@ function Cards(item) {
     img = document.createElement('img'),
     byAuthor = document.createElement('span');
 
+    // console.log(imgContainer);
+
     //Classlist
 
     mainCard.classList.add('card');
@@ -72,14 +72,15 @@ function Cards(item) {
     //Append
     mainCard.appendChild(headline);
     mainCard.appendChild(author);
-    mainCard.appendChild(byAuthor);
     author.appendChild(imgContainer);
+    author.appendChild(byAuthor);
     imgContainer.appendChild(img);
 
+    console.log(img)
     // Text Content
     headline.textContent = `Headline: ${item.headline}`;
-    author.textContent = `author: ${authorName}`;
-    img.setAttribute('src', item.authorPhoto);
+    author.textContent = `Author: ${item.authorName}`;
+    img.setAttribute('src', item.authorPhoto );
 
     return mainCard
 }
