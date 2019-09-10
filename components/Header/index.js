@@ -11,9 +11,9 @@
 
 const headerContainer = document.querySelector('.header-container');
 
-headerContainer.appendChild(Header());
+// headerContainer.appendChild(Header());
 
-function Header(item) {
+function Header() {
   //Creating Elements
   const 
     mainHeader = document.createElement('div'),
@@ -32,7 +32,14 @@ function Header(item) {
     mainHeader.appendChild(headerTitle);
     mainHeader.appendChild(temp);
 
+    //Text Content
+    date.textContent = 'March 28, 2019';
+    headerTitle.textContent = "Lmabda Times";
+    temp.textContent = '98 Degrees'
+
+    headerContainer.appendChild(mainHeader);
+
     return mainHeader
 }
-
+Header();
 // console.log(headerContainer);
